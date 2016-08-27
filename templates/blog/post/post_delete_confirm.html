@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block title %}
+Ini Delete Confirm
+{% endblock %}
+
+{% block content %}
+	<p>Are You Sure To Edit this {{ post.title }}</p>
+	<form method="POST" action=".">
+		{% csrf_token %}
+		<div class="fieldWrapper">
+		    {{ form.slug.errors }}
+		    <label for="{{ form.slug.id_for_label }}">Email subject:</label>
+		    {{ form.slug|add_class:"boud"|attr:"type:password"}}
+		</div>
+		<input type="submit" value="Delete">
+	</form>	
+{% endblock %}

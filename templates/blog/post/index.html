@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}
+Ini Index
+{% endblock %}
+
+{% block content %}
+<a href="{% url 'blog:post_add'%}">
+	Add
+</a>
+<table>
+	<tr>
+		<th>#</th>
+		<th>ID</th>
+		<th>Title</th>
+		<th>Author</th>
+		<th>Detail</th>
+	</tr>
+{% for post in data %}
+	<tr>
+		<td>{{ forloop.counter }}</td>
+		<td>{{ post.id }}</td>
+		<td>{{ post.title }}</td>
+		<td>{{ post.author }}</td>
+		<td><a href="{% url 'blog:post_detail' post.id %}">
+				Detail
+			</a>
+
+			<a href="{% url 'blog:post_edit' post.id %}">Edit</a>
+			<a href="{% url 'blog:post_delete' post.id %}">Delete</a>
+		</td>
+	</tr>
+{% endfor %}	
+</table>
+
+{% endblock %}
